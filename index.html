@@ -3,14 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" href="./styles.css">
     <title>Document</title>
 </head>
 <body>
+  <div id="container">
+  <h3>Enter a City to get the weather for that city</h3>
     <form id="user-form" class="card-body">
-        <label>Username</label>
+        
         <input name="city" id="city" type="text" autofocus="true" class="form-input" />
         <button type="submit" class="btn">Get city</button>
       </form>
+  </div>
+  <div id="displayWeather">
+    <h4>test</h4>
+  </div>
 </body>
 
 <script>
@@ -59,10 +66,12 @@ if (city) {
   userFormEl.addEventListener("submit", formSubmitHandler);
 
   var displayCity = function(data, city) {
+    console.log(city);
     console.log(data);
-    console.log(city)
-  };
   
-
+    var weather = document.querySelector("#displayWeather");
+    weather.createElement="div";
+    weather.innerHTML = "<p>" + city + "</p><p>"+JSON.stringify(data.main)+"</p>" ;
+  };
 </script>
 </html>

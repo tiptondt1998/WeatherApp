@@ -1,0 +1,19 @@
+#container{
+    background-color: blue;
+    color: white;
+}
+#container h3{
+    text-align: center;
+}
+#container input{
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 0 40%;
+}
+#container button{
+    margin: 10px 0 0 45%;
+}
+#displayWeather{
+    background-color: tomato;
+    text-align: center;
+}
