@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel = "stylesheet" href="./styles.css">
-    <title>Document</title>
+    <title>Weather App</title>
 </head>
 <body>
   <div id="container">
@@ -16,62 +16,12 @@
       </form>
   </div>
   <div id="displayWeather">
-    <h4>test</h4>
+    <h4>No city currently displayed</h4>
   </div>
+  <div id="searchHistory"></div>
 </body>
-
-<script>
-var nameInputEl = document.querySelector("#inputField");
-var url = "api.openweathermap.org/data/2.5/weather?q="+ nameInputEl+"&appid=de9be8a62e91f54477dfa886a78cb6ec";
-
-
-var getCity = function(city){
-    //format the github api url
-    var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q="+ city +"&appid=de9be8a62e91f54477dfa886a78cb6ec&units=imperial";
-    //make a request to the url
-    fetch(apiUrl)
-    .then(function(response) {
-      // request was successful
-      if (response.ok) {
-        response.json().then(function(data) {
-          displayCity(data, city);
-        });
-      } else {
-        alert("Error: " + response.statusText);
-      }
-    })
-    .catch(function(error) {
-      // Notice this `.catch()` getting chained onto the end of the `.then()` method
-      alert("Unable to connect");
-    });
-};
-
-var userFormEl = document.querySelector("#user-form");
-var nameInputEl = document.querySelector("#city");
-
-var formSubmitHandler = function(event) {
-    event.preventDefault();
-    // get value from input element
-var city = nameInputEl.value.trim();
-
-if (city) {
-  getCity(city);
-  nameInputEl.value = "";
-} else {
-  alert("Please enter a city");
-}
-    console.log(event);
-  };
-
-  userFormEl.addEventListener("submit", formSubmitHandler);
-
-  var displayCity = function(data, city) {
-    console.log(city);
-    console.log(data);
-  
-    var weather = document.querySelector("#displayWeather");
-    weather.createElement="div";
-    weather.innerHTML = "<p>" + city + "</p><p>"+JSON.stringify(data.main)+"</p>" ;
-  };
-</script>
+<footer>
+  &copy; Footer
+</footer>
+<script src="./script.js"></script>
 </html>
