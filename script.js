@@ -2,7 +2,7 @@ var getCity = function(city){
     //format the github api url
     // var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q="+ city +"&appid=de9be8a62e91f54477dfa886a78cb6ec&units=imperial";
     //make a request to the url
-    var apiUrl = "http://api.openweathermap.org/data/2.5/forecast?q="+city+"&appid=de9be8a62e91f54477dfa886a78cb6ec&units=imperial";
+    var apiUrl = "https://api.openweathermap.org/data/2.5/forecast?q="+city+"&appid=de9be8a62e91f54477dfa886a78cb6ec&units=imperial";
     fetch(apiUrl)
     .then(function(response) {
       // request was successful
