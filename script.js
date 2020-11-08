@@ -47,38 +47,67 @@ if (city) {
     var month = (today.getMonth()+1);
     var day = today.getDate();
     var year = today.getFullYear();
+    
+    var determineConditions = function(index){
+      var x = "";
+      var y = data.list[index].weather[0].description;
+      if(y === "overcast clouds"){
+        x = "overcast clouds";
+      }
+      else if(y === "broken clouds"){
+        x = "broken clouds";
+      }
+      else if(y === "scattered clouds"){
+        x = "scattered clouds";
+      }
+      else if(y === "few clouds"){
+        x = "few clouds";
+      }
+      else if(y === "light rain"){
+        x = "light rain";
+      }
+      else if(y === "clear sky"){
+        x = "clear sky";
+      }
+        return x;
+    }
+
     var weather = document.querySelector("#displayWeather");
     weather.createElement="div";
-    
+
     weather.innerHTML = "<p id=weatherResult class=card>"+
     month + "-" + day + "-" + year + 
     "<br>Temperature:  "+ JSON.stringify(data.list[0].main.temp) + "<br>" +
      "Humidity: " + JSON.stringify(data.list[0].main.humidity) +
-    "</p>" + 
+     "<br>" + "Conditions: " + determineConditions(0) +
+     "</p>" + 
     "<p id =weatherResult class=card>" +
     month + "-" + (day+1) + "-" + year +
     "<br>Temperature: " + JSON.stringify(data.list[1].main.temp) + "<br>" +
     "Humidity: " + JSON.stringify(data.list[1].main.humidity) +
+    "<br>" + "Conditions: " + determineConditions(1) +
     "</p>" +
     "<p id =weatherResult class=card>" +
     month + "-" + (day+2) + "-" + year +
     "<br>Temperature: " + JSON.stringify(data.list[2].main.temp) + "<br>" +
     "Humidity: " + JSON.stringify(data.list[2].main.humidity) +
+    "<br>" + "Conditions: " + determineConditions(2) +
     "</p>" +
     "<p id =weatherResult class=card>" +
     month + "-" + (day+3) + "-" + year +
     "<br>Temperature: " + JSON.stringify(data.list[3].main.temp) + "<br>" +
     "Humidity: " + JSON.stringify(data.list[3].main.humidity) +
+    "<br>" + "Conditions: " + determineConditions(3) +
     "</p>" +
     "<p id =weatherResult class=card>" +
     month + "-" + (day+4) + "-" + year +
     "<br>Temperature: " + JSON.stringify(data.list[4].main.temp) + "<br>" +
     "Humidity: " + JSON.stringify(data.list[4].main.humidity) +
+    "<br>" + "Conditions: " + determineConditions(4) +
     "</p>"
     localStorage.setItem(city, JSON.stringify(data.list[1].main.temp));
     
     var searchHistory = document.getElementById("searchHistory");
     searchHistory.innerHTML = "<button id=history>"+ city +"</button>"
-
 
   };
